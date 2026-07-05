@@ -242,5 +242,4 @@ html.has-luxe-cursor, html.has-luxe-cursor * { cursor: none !important; }
   background-image: radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px);
   background-size: 3px 3px;
   mix-blend-mode: overlay; opacity: 0.35;
-  }
 }
