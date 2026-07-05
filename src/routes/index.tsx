@@ -437,24 +437,24 @@ function Gallery() {
           <Reveal delay={0.1}><h2 className="mt-6 text-5xl md:text-6xl h-display">Beautiful spaces,<br/><span className="italic text-[color:var(--forest)]">beautiful stories.</span></h2></Reveal>
           <Reveal delay={0.2}><p className="mt-6 text-[color:var(--body)] max-w-lg">A curated frame of the estate — where every corner tells its own quiet story.</p></Reveal>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 md:grid-rows-3 md:auto-rows-[220px] gap-3 md:gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[180px] md:auto-rows-[220px] gap-3 md:gap-4">
           {GALLERY.map((g, i) => {
             const spans = [
               "md:col-span-2 md:row-span-2",
+              "md:col-span-2 md:row-span-1",
               "md:col-span-1 md:row-span-1",
-              "md:col-span-1 md:row-span-2",
               "md:col-span-1 md:row-span-1",
               "md:col-span-2 md:row-span-1",
               "md:col-span-1 md:row-span-1",
-              "md:col-span-2 md:row-span-1",
+              "md:col-span-1 md:row-span-1",
             ];
-            const span = spans[i] || "";
+            const span = spans[i] || "md:col-span-1 md:row-span-1";
             return (
-              <Reveal key={i} delay={i * 0.05} className={span}>
+              <Reveal key={i} delay={i * 0.05} className={span + " h-full"}>
                 <a
                   href="#stay"
                   data-interactive
-                  className="relative group block w-full h-full min-h-[220px] rounded-[6px] overflow-hidden"
+                  className="relative group block w-full h-full rounded-[6px] overflow-hidden"
                   style={{ boxShadow: "0 30px 70px -40px rgba(43,43,43,0.45)" }}
                 >
                   <img
