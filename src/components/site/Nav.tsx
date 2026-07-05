@@ -25,13 +25,13 @@ export function Nav() {
     <header
       className={[
         "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
-        inHero ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0",
-        scrolled ? "backdrop-blur-xl bg-[color:var(--cream)]/70 border-b border-black/5 py-2" : "bg-transparent py-4",
+        inHero ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0 pointer-events-none",
+        scrolled ? "backdrop-blur-xl bg-[color:var(--cream)]/70 border-b border-black/5 py-2" : "bg-transparent py-3",
       ].join(" ")}
     >
       <div className="container-luxe flex items-center justify-between gap-6">
         <Link to="/" className="flex items-center gap-2 shrink-0" aria-label="Amita Rasa home">
-          <img src={IMG.logo} alt="Amita Rasa" className={"h-12 md:h-16 w-auto transition " + (scrolled ? "" : "brightness-0 invert")} />
+          <img src={IMG.logo} alt="Amita Rasa" className={"h-12 md:h-14 w-auto transition " + (scrolled ? "" : "brightness-0 invert")} />
         </Link>
         <nav className="hidden lg:flex items-center gap-8">
           {NAV_LINKS.map((l) => (
