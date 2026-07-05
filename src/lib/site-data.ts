@@ -11,6 +11,8 @@ import dining from "@/assets/dining.jpg";
 import gardens from "@/assets/gardens.jpg";
 import hero from "@/assets/hero.jpg";
 import logo from "@/assets/logo.png";
+import filmAsset from "@/assets/amita-film.mp4.asset.json";
+import resortMainAsset from "@/assets/resort-main.png.asset.json";
 
 export const IMG = {
   concert: concert.url,
@@ -26,6 +28,8 @@ export const IMG = {
   gardens,
   hero,
   logo,
+  film: filmAsset.url,
+  resortMain: resortMainAsset.url,
 };
 
 export const NAV_LINKS = [
