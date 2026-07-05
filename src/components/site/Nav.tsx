@@ -21,7 +21,7 @@ export function Nav() {
     >
       <div className="container-luxe flex items-center justify-between gap-6">
         <Link to="/" className="flex items-center gap-2 shrink-0" aria-label="Amita Rasa home">
-          <img src={IMG.logo} alt="Amita Rasa" className={"h-14 md:h-20 w-auto transition " + (scrolled ? "" : "brightness-0 invert")} />
+          <img src={IMG.logo} alt="Amita Rasa" className={"h-20 md:h-28 w-auto transition " + (scrolled ? "" : "brightness-0 invert")} />
         </Link>
         <nav className="hidden lg:flex items-center gap-8">
           {NAV_LINKS.map((l) => (
