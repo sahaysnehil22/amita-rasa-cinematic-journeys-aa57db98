@@ -437,24 +437,24 @@ function Gallery() {
           <Reveal delay={0.1}><h2 className="mt-6 text-5xl md:text-6xl h-display">Beautiful spaces,<br/><span className="italic text-[color:var(--forest)]">beautiful stories.</span></h2></Reveal>
           <Reveal delay={0.2}><p className="mt-6 text-[color:var(--body)] max-w-lg">A curated frame of the estate — where every corner tells its own quiet story.</p></Reveal>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 md:grid-rows-3 md:auto-rows-[220px] gap-3 md:gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[180px] md:auto-rows-[220px] gap-3 md:gap-4">
           {GALLERY.map((g, i) => {
             const spans = [
               "md:col-span-2 md:row-span-2",
+              "md:col-span-2 md:row-span-1",
               "md:col-span-1 md:row-span-1",
-              "md:col-span-1 md:row-span-2",
               "md:col-span-1 md:row-span-1",
               "md:col-span-2 md:row-span-1",
               "md:col-span-1 md:row-span-1",
-              "md:col-span-2 md:row-span-1",
+              "md:col-span-1 md:row-span-1",
             ];
-            const span = spans[i] || "";
+            const span = spans[i] || "md:col-span-1 md:row-span-1";
             return (
-              <Reveal key={i} delay={i * 0.05} className={span}>
+              <Reveal key={i} delay={i * 0.05} className={span + " h-full"}>
                 <a
                   href="#stay"
                   data-interactive
-                  className="relative group block w-full h-full min-h-[220px] rounded-[6px] overflow-hidden"
+                  className="relative group block w-full h-full rounded-[6px] overflow-hidden"
                   style={{ boxShadow: "0 30px 70px -40px rgba(43,43,43,0.45)" }}
                 >
                   <img
@@ -582,8 +582,8 @@ function ResortMap() {
         </div>
         <div className="grid md:grid-cols-2 gap-6">
           <Reveal className="relative rounded-[6px] overflow-hidden aspect-[4/3] group" >
-            <div className="w-full h-full overflow-hidden" style={{ boxShadow: "0 40px 100px -50px rgba(43,43,43,0.4)" }}>
-              <img src={IMG.resortMain} alt="Amita Rasa resort" className="w-full h-full object-cover transition-transform duration-[1600ms] group-hover:scale-105" loading="lazy" />
+            <div className="w-full h-full overflow-hidden relative" style={{ boxShadow: "0 40px 100px -50px rgba(43,43,43,0.4)" }}>
+              <img src={IMG.amphitheatre} alt="Amita Rasa amphitheatre" className="w-full h-full object-cover transition-transform duration-[1600ms] group-hover:scale-105" loading="lazy" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
               <div className="absolute bottom-5 left-5 right-5 text-[color:var(--cream)]">
                 <div className="text-[10px] tracking-[0.32em] uppercase text-[color:var(--gold)]/95">The Estate</div>
@@ -592,7 +592,14 @@ function ResortMap() {
             </div>
           </Reveal>
           <Reveal delay={0.1} className="rounded-[6px] overflow-hidden aspect-[4/3] border border-black/8">
-            <iframe title="Google Map" className="w-full h-full" src="https://www.google.com/maps?q=Coorg+Karnataka&output=embed" loading="lazy" />
+            <iframe
+              title="Google Map"
+              className="w-full h-full block"
+              src="https://maps.google.com/maps?q=Coorg%2C+Karnataka%2C+India&t=&z=10&ie=UTF8&iwloc=&output=embed"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
+            />
           </Reveal>
         </div>
       </div>
