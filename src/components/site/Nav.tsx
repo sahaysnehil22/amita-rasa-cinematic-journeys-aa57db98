@@ -13,8 +13,9 @@ export function Nav() {
       setScrolled(y > 40);
       const hero = document.getElementById("home");
       if (hero) {
-        const bottom = hero.getBoundingClientRect().bottom;
-        setInHero(bottom > 60);
+        setInHero(hero.getBoundingClientRect().bottom > 60);
+      } else {
+        setInHero(false);
       }
     };
     on();
