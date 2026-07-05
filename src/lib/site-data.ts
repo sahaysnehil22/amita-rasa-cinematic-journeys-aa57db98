@@ -1,35 +1,37 @@
-import concert from "@/assets/concert.jpeg.asset.json";
-import amphitheatre from "@/assets/amphitheatre.jpeg.asset.json";
-import mandapHills from "@/assets/mandap-hills.jpeg.asset.json";
-import pavilionFloral from "@/assets/pavilion-floral.jpeg.asset.json";
-import stoneArches from "@/assets/stone-arches.jpeg.asset.json";
-import amphiCushions from "@/assets/amphi-cushions.jpeg.asset.json";
-import mandapRed from "@/assets/mandap-red.jpeg.asset.json";
+import concert from "@/assets/concert.jpeg";
+import amphitheatre from "@/assets/amphitheatre.jpeg";
+import mandapHills from "@/assets/mandap-hills.jpeg";
+import pavilionFloral from "@/assets/pavilion-floral.jpeg";
+import stoneArches from "@/assets/stone-arches.jpeg";
+import amphiCushions from "@/assets/amphi-cushions.jpeg";
+import mandapRed from "@/assets/mandap-red.jpeg";
 import roomSuite from "@/assets/room-suite.jpg";
 import pool from "@/assets/pool.jpg";
 import dining from "@/assets/dining.jpg";
 import gardens from "@/assets/gardens.jpg";
 import hero from "@/assets/hero.jpg";
 import logo from "@/assets/logo.png";
-import filmAsset from "@/assets/amita-film.mp4.asset.json";
-import resortMainAsset from "@/assets/resort-main.png.asset.json";
+import resortMain from "@/assets/resort-main.png";
+
+// Hero film is too large to commit to the repo (>10MB); served from Lovable CDN.
+const film = "https://id-preview--1b429643-6fd4-4416-897f-430ab662fb5c.lovable.app/__l5e/assets-v1/db0f0580-ae93-4e77-abcc-82e368731e5b/amita-film.mp4";
 
 export const IMG = {
-  concert: concert.url,
-  amphitheatre: amphitheatre.url,
-  mandapHills: mandapHills.url,
-  pavilionFloral: pavilionFloral.url,
-  stoneArches: stoneArches.url,
-  amphiCushions: amphiCushions.url,
-  mandapRed: mandapRed.url,
+  concert,
+  amphitheatre,
+  mandapHills,
+  pavilionFloral,
+  stoneArches,
+  amphiCushions,
+  mandapRed,
   roomSuite,
   pool,
   dining,
   gardens,
   hero,
   logo,
-  film: filmAsset.url,
-  resortMain: resortMainAsset.url,
+  film,
+  resortMain,
 };
 
 export const NAV_LINKS = [
