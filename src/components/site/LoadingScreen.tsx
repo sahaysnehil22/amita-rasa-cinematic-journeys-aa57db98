@@ -25,7 +25,7 @@ export function LoadingScreen({ done }: { done: boolean }) {
             <motion.img
               src={IMG.logo}
               alt="Amita Rasa"
-              className="relative h-24 md:h-28 w-auto"
+              className="relative h-36 md:h-44 w-auto"
               initial={{ opacity: 0, scale: 0.94, filter: "blur(6px)" }}
               animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
               transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
