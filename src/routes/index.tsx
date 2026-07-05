@@ -555,50 +555,27 @@ function Field({ className = "", label, value, onChange, placeholder, type = "te
 
 /* --------------------- Resort Map --------------------- */
 function ResortMap() {
-  const pins = [
-    { x: 22, y: 40, label: "Amphitheatre" },
-    { x: 55, y: 28, label: "Wedding Pavilion" },
-    { x: 72, y: 55, label: "Infinity Pool" },
-    { x: 40, y: 65, label: "Restaurant" },
-    { x: 62, y: 78, label: "Luxury Rooms" },
-  ];
-  const [active, setActive] = useState(0);
   return (
     <section id="events" className="py-24 md:py-32 bg-[color:var(--sand)]">
       <div className="container-luxe">
         <div className="max-w-3xl mb-14">
           <Reveal><Eyebrow>Find Your Way</Eyebrow></Reveal>
-          <Reveal delay={0.1}><h2 className="mt-6 text-5xl md:text-6xl h-display">A resort you can <span className="italic text-[color:var(--forest)]">walk in your mind.</span></h2></Reveal>
+          <Reveal delay={0.1}><h2 className="mt-6 text-5xl md:text-6xl h-display">Set within <span className="italic text-[color:var(--forest)]">quiet forest.</span></h2></Reveal>
         </div>
-        <div className="grid md:grid-cols-12 gap-6">
-          <div className="md:col-span-8 relative rounded-[6px] overflow-hidden aspect-[16/10] bg-[color:var(--sand)]">
-            <img src={IMG.resortMain} alt="Amita Rasa resort aerial view" className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-            {pins.map((p, i) => (
-              <button
-                key={p.label}
-                onClick={() => setActive(i)}
-                data-interactive
-                className="absolute -translate-x-1/2 -translate-y-1/2 group"
-                style={{ left: `${p.x}%`, top: `${p.y}%` }}
-              >
-                <span className={"block rounded-full transition-all " + (active === i ? "w-6 h-6 bg-[color:var(--forest)]/30" : "w-4 h-4 bg-[color:var(--gold)]/40")} />
-                <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2.5 h-2.5 rounded-full bg-[color:var(--forest)] ring-2 ring-[color:var(--cream)]" />
-                <span className="absolute left-[calc(100%+8px)] top-1/2 -translate-y-1/2 whitespace-nowrap text-[10px] tracking-[0.22em] uppercase text-[color:var(--cream)] bg-[color:var(--ink)]/70 backdrop-blur px-2 py-1 rounded-full">{p.label}</span>
-              </button>
-            ))}
-            <div className="absolute bottom-4 left-4 glass-card rounded-full px-4 py-2 text-xs tracking-[0.22em] uppercase text-[color:var(--ink)]">Resort Map · Click a pin</div>
-          </div>
-          <div className="md:col-span-4 flex flex-col gap-4">
-            <div className="rounded-[6px] overflow-hidden aspect-square md:aspect-auto md:flex-1 border border-black/8">
-              <iframe title="Google Map" className="w-full h-full min-h-[280px]" src="https://www.google.com/maps?q=Coorg+Karnataka&output=embed" loading="lazy" />
+        <div className="grid md:grid-cols-2 gap-6">
+          <Reveal className="relative rounded-[6px] overflow-hidden aspect-[4/3] group" >
+            <div className="w-full h-full overflow-hidden" style={{ boxShadow: "0 40px 100px -50px rgba(43,43,43,0.4)" }}>
+              <img src={IMG.resortMain} alt="Amita Rasa resort" className="w-full h-full object-cover transition-transform duration-[1600ms] group-hover:scale-105" loading="lazy" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+              <div className="absolute bottom-5 left-5 right-5 text-[color:var(--cream)]">
+                <div className="text-[10px] tracking-[0.32em] uppercase text-[color:var(--gold)]/95">The Estate</div>
+                <div className="mt-1 text-2xl h-display">Amita Rasa · 20 acres</div>
+              </div>
             </div>
-            <div className="p-5 rounded-[6px] bg-[color:var(--cream)] border border-black/8">
-              <div className="text-[11px] tracking-[0.28em] uppercase text-[color:var(--gold)]">Location Selected</div>
-              <div className="mt-2 text-xl h-display">{pins[active].label}</div>
-              <p className="mt-2 text-sm text-[color:var(--body)]">Handcrafted spaces set inside 20 acres of quiet forest.</p>
-            </div>
-          </div>
+          </Reveal>
+          <Reveal delay={0.1} className="rounded-[6px] overflow-hidden aspect-[4/3] border border-black/8">
+            <iframe title="Google Map" className="w-full h-full" src="https://www.google.com/maps?q=Coorg+Karnataka&output=embed" loading="lazy" />
+          </Reveal>
         </div>
       </div>
     </section>
