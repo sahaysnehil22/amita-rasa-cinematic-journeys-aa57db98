@@ -80,7 +80,15 @@ function Hero() {
   return (
     <section ref={ref} className="relative h-[100svh] w-full overflow-hidden grain" id="home">
       <motion.div style={{ y }} className="absolute inset-0">
-        <img src={IMG.hero} alt="Amita Rasa resort at dawn" className="w-full h-full object-cover animate-kenburns" fetchPriority="high" />
+        <video
+          src={IMG.film}
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster={IMG.hero}
+          className="w-full h-full object-cover"
+        />
       </motion.div>
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/70" />
       <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-black/20" />
@@ -360,8 +368,8 @@ function FeaturedCelebration() {
       <div className="container-luxe grid md:grid-cols-12 gap-10 items-center">
         <Reveal className="md:col-span-7">
           <div className="relative overflow-hidden rounded-[4px] aspect-[16/10] group cursor-pointer" onClick={() => setOpen(true)} data-interactive>
-            <img src={IMG.concert} alt="Featured celebration" className="w-full h-full object-cover transition-transform duration-[1600ms] group-hover:scale-105" loading="lazy" />
-            <div className="absolute inset-0 bg-black/40 group-hover:bg-black/25 transition-colors" />
+            <video src={IMG.film} autoPlay muted loop playsInline poster={IMG.concert} className="w-full h-full object-cover" />
+            <div className="absolute inset-0 bg-black/35 group-hover:bg-black/20 transition-colors" />
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="relative">
                 <span className="absolute inset-0 rounded-full bg-[color:var(--cream)]/30 animate-leaf-glow" />
@@ -386,7 +394,7 @@ function FeaturedCelebration() {
         {open && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[80] bg-black/85 backdrop-blur-sm flex items-center justify-center p-4" onClick={() => setOpen(false)}>
             <motion.div initial={{ scale: 0.94, y: 20 }} animate={{ scale: 1, y: 0 }} exit={{ scale: 0.94 }} transition={{ duration: 0.4 }} className="relative w-full max-w-5xl aspect-video rounded-lg overflow-hidden" onClick={(e) => e.stopPropagation()}>
-              <iframe src="https://player.vimeo.com/video/76979871?autoplay=1&title=0&byline=0&portrait=0" className="w-full h-full" allow="autoplay; fullscreen" />
+              <video src={IMG.film} autoPlay loop controls playsInline className="w-full h-full object-cover bg-black" />
               <button aria-label="Close" onClick={() => setOpen(false)} className="absolute top-3 right-3 w-10 h-10 rounded-full bg-[color:var(--cream)]/90 flex items-center justify-center text-[color:var(--ink)]"><X size={16} /></button>
             </motion.div>
           </motion.div>
@@ -576,26 +584,23 @@ function ResortMap() {
           <Reveal delay={0.1}><h2 className="mt-6 text-5xl md:text-6xl h-display">A resort you can <span className="italic text-[color:var(--forest)]">walk in your mind.</span></h2></Reveal>
         </div>
         <div className="grid md:grid-cols-12 gap-6">
-          <div className="md:col-span-8 relative rounded-[6px] overflow-hidden aspect-[16/10]" style={{ background: "linear-gradient(160deg, #E9E4D6, #D9D2BE)" }}>
-            <svg viewBox="0 0 800 500" className="absolute inset-0 w-full h-full">
-              <defs>
-                <pattern id="dot" width="10" height="10" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="0.8" fill="rgba(0,0,0,0.10)"/></pattern>
-                <radialGradient id="lake" cx="50%" cy="50%"><stop offset="0%" stopColor="#8DAA91"/><stop offset="100%" stopColor="#5C8871"/></radialGradient>
-              </defs>
-              <rect width="800" height="500" fill="url(#dot)"/>
-              <path d="M0,320 C160,260 260,380 420,340 C580,300 700,360 800,320 L800,500 L0,500 Z" fill="#B7C7A9"/>
-              <path d="M0,180 C120,120 260,210 380,160 C520,100 700,200 800,150 L800,220 L0,260 Z" fill="#CBD6BB" opacity="0.7"/>
-              <ellipse cx="560" cy="290" rx="90" ry="42" fill="url(#lake)"/>
-              <path d="M60,420 C220,360 400,440 780,380" stroke="#B59A67" strokeDasharray="4 6" fill="none" strokeWidth="1.6"/>
-              {pins.map((p, i) => (
-                <g key={p.label} transform={`translate(${p.x*8},${p.y*5})`} className="cursor-pointer" onClick={() => setActive(i)}>
-                  <circle r={active === i ? 16 : 10} fill={active === i ? "#2E5E4E" : "#B59A67"} opacity="0.25"/>
-                  <circle r="6" fill="#2E5E4E"/>
-                  <text x="10" y="4" fontSize="11" fontFamily="Manrope" fill="#2B2B2B">{p.label}</text>
-                </g>
-              ))}
-            </svg>
-            <div className="absolute bottom-4 left-4 glass-card rounded-full px-4 py-2 text-xs tracking-[0.22em] uppercase text-[color:var(--ink)]">Illustrated Map · Click a pin</div>
+          <div className="md:col-span-8 relative rounded-[6px] overflow-hidden aspect-[16/10] bg-[color:var(--sand)]">
+            <img src={IMG.resortMain} alt="Amita Rasa resort aerial view" className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+            {pins.map((p, i) => (
+              <button
+                key={p.label}
+                onClick={() => setActive(i)}
+                data-interactive
+                className="absolute -translate-x-1/2 -translate-y-1/2 group"
+                style={{ left: `${p.x}%`, top: `${p.y}%` }}
+              >
+                <span className={"block rounded-full transition-all " + (active === i ? "w-6 h-6 bg-[color:var(--forest)]/30" : "w-4 h-4 bg-[color:var(--gold)]/40")} />
+                <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2.5 h-2.5 rounded-full bg-[color:var(--forest)] ring-2 ring-[color:var(--cream)]" />
+                <span className="absolute left-[calc(100%+8px)] top-1/2 -translate-y-1/2 whitespace-nowrap text-[10px] tracking-[0.22em] uppercase text-[color:var(--cream)] bg-[color:var(--ink)]/70 backdrop-blur px-2 py-1 rounded-full">{p.label}</span>
+              </button>
+            ))}
+            <div className="absolute bottom-4 left-4 glass-card rounded-full px-4 py-2 text-xs tracking-[0.22em] uppercase text-[color:var(--ink)]">Resort Map · Click a pin</div>
           </div>
           <div className="md:col-span-4 flex flex-col gap-4">
             <div className="rounded-[6px] overflow-hidden aspect-square md:aspect-auto md:flex-1 border border-black/8">
