@@ -429,45 +429,63 @@ function Amenities() {
 
 /* --------------------- Gallery Bento --------------------- */
 function Gallery() {
-  const [flipped, setFlipped] = useState<number | null>(null);
   return (
     <section id="gallery" className="py-24 md:py-32 bg-[color:var(--sand)]">
       <div className="container-luxe">
         <div className="max-w-3xl mb-14">
           <Reveal><Eyebrow>Glimpses of Amita Rasa</Eyebrow></Reveal>
           <Reveal delay={0.1}><h2 className="mt-6 text-5xl md:text-6xl h-display">Beautiful spaces,<br/><span className="italic text-[color:var(--forest)]">beautiful stories.</span></h2></Reveal>
-          <Reveal delay={0.2}><p className="mt-6 text-[color:var(--body)] max-w-lg">Tap any card to reveal the story behind the frame.</p></Reveal>
+          <Reveal delay={0.2}><p className="mt-6 text-[color:var(--body)] max-w-lg">A curated frame of the estate — where every corner tells its own quiet story.</p></Reveal>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 md:auto-rows-[220px] gap-4">
-          {GALLERY.map((g, i) => (
-            <Reveal key={i} delay={i*0.04} className={g.span || ""}>
-              <div
-                data-interactive
-                onClick={() => setFlipped(flipped === i ? null : i)}
-                className={"flip-card w-full h-full min-h-[220px] cursor-pointer rounded-[4px] " + (flipped === i ? "is-flipped" : "")}
-                style={{ boxShadow: "0 25px 60px -35px rgba(43,43,43,0.4)" }}
-              >
-                <div className="flip-card-inner w-full h-full">
-                  <div className="flip-card-face group">
-                    <img src={g.img} alt={g.title} loading="lazy" className="w-full h-full object-cover transition-transform duration-[1400ms] group-hover:scale-110" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-                    <div className="absolute bottom-4 left-4 right-4 text-[color:var(--cream)]">
-                      <div className="text-lg" style={{fontFamily:"var(--font-display)"}}>{g.title}</div>
-                      <div className="text-[10px] tracking-[0.28em] uppercase text-[color:var(--cream)]/70 mt-1">Tap to explore</div>
-                    </div>
+        <div className="grid grid-cols-2 md:grid-cols-4 md:grid-rows-3 md:auto-rows-[220px] gap-3 md:gap-4">
+          {GALLERY.map((g, i) => {
+            const spans = [
+              "md:col-span-2 md:row-span-2",
+              "md:col-span-1 md:row-span-1",
+              "md:col-span-1 md:row-span-2",
+              "md:col-span-1 md:row-span-1",
+              "md:col-span-2 md:row-span-1",
+              "md:col-span-1 md:row-span-1",
+              "md:col-span-2 md:row-span-1",
+            ];
+            const span = spans[i] || "";
+            return (
+              <Reveal key={i} delay={i * 0.05} className={span}>
+                <a
+                  href="#stay"
+                  data-interactive
+                  className="relative group block w-full h-full min-h-[220px] rounded-[6px] overflow-hidden"
+                  style={{ boxShadow: "0 30px 70px -40px rgba(43,43,43,0.45)" }}
+                >
+                  <img
+                    src={g.img}
+                    alt={g.title}
+                    loading="lazy"
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1800ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.08]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent opacity-90 transition-opacity duration-700 group-hover:opacity-100" />
+                  <div className="absolute inset-0 ring-1 ring-inset ring-white/10" />
+
+                  <div className="absolute top-4 left-4 text-[10px] tracking-[0.32em] uppercase text-[color:var(--cream)]/70">
+                    {String(i + 1).padStart(2, "0")}
                   </div>
-                  <div className="flip-card-face flip-card-back p-6 flex flex-col justify-between text-[color:var(--cream)]" style={{ background: "linear-gradient(150deg, #2E5E4E, #1B3A30)" }}>
-                    <div>
-                      <div className="text-[10px] tracking-[0.3em] uppercase text-[color:var(--gold)]">{g.capacity ?? "The Space"}</div>
-                      <div className="mt-2 text-2xl" style={{fontFamily:"var(--font-display)"}}>{g.title}</div>
-                      <p className="mt-3 text-sm text-[color:var(--cream)]/80 leading-relaxed">{g.desc}</p>
-                    </div>
-                    <div className="mt-6 flex items-center gap-2 text-xs tracking-[0.22em] uppercase text-[color:var(--gold)]">Enquire <ArrowUpRight size={14} /></div>
+                  <div className="absolute top-4 right-4 w-9 h-9 rounded-full bg-[color:var(--cream)]/90 flex items-center justify-center opacity-0 -translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
+                    <ArrowUpRight size={16} className="text-[color:var(--forest)]" />
                   </div>
-                </div>
-              </div>
-            </Reveal>
-          ))}
+
+                  <div className="absolute bottom-0 left-0 right-0 p-5 md:p-6 text-[color:var(--cream)]">
+                    {g.capacity && (
+                      <div className="text-[10px] tracking-[0.28em] uppercase text-[color:var(--gold)]/95">{g.capacity}</div>
+                    )}
+                    <div className="mt-1 text-xl md:text-2xl" style={{ fontFamily: "var(--font-display)" }}>{g.title}</div>
+                    <p className="mt-1.5 text-xs md:text-sm text-[color:var(--cream)]/75 leading-relaxed max-w-[36ch] opacity-0 max-h-0 group-hover:opacity-100 group-hover:max-h-24 transition-all duration-700">
+                      {g.desc}
+                    </p>
+                  </div>
+                </a>
+              </Reveal>
+            );
+          })}
         </div>
       </div>
     </section>
@@ -555,50 +573,27 @@ function Field({ className = "", label, value, onChange, placeholder, type = "te
 
 /* --------------------- Resort Map --------------------- */
 function ResortMap() {
-  const pins = [
-    { x: 22, y: 40, label: "Amphitheatre" },
-    { x: 55, y: 28, label: "Wedding Pavilion" },
-    { x: 72, y: 55, label: "Infinity Pool" },
-    { x: 40, y: 65, label: "Restaurant" },
-    { x: 62, y: 78, label: "Luxury Rooms" },
-  ];
-  const [active, setActive] = useState(0);
   return (
     <section id="events" className="py-24 md:py-32 bg-[color:var(--sand)]">
       <div className="container-luxe">
         <div className="max-w-3xl mb-14">
           <Reveal><Eyebrow>Find Your Way</Eyebrow></Reveal>
-          <Reveal delay={0.1}><h2 className="mt-6 text-5xl md:text-6xl h-display">A resort you can <span className="italic text-[color:var(--forest)]">walk in your mind.</span></h2></Reveal>
+          <Reveal delay={0.1}><h2 className="mt-6 text-5xl md:text-6xl h-display">Set within <span className="italic text-[color:var(--forest)]">quiet forest.</span></h2></Reveal>
         </div>
-        <div className="grid md:grid-cols-12 gap-6">
-          <div className="md:col-span-8 relative rounded-[6px] overflow-hidden aspect-[16/10] bg-[color:var(--sand)]">
-            <img src={IMG.resortMain} alt="Amita Rasa resort aerial view" className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-            {pins.map((p, i) => (
-              <button
-                key={p.label}
-                onClick={() => setActive(i)}
-                data-interactive
-                className="absolute -translate-x-1/2 -translate-y-1/2 group"
-                style={{ left: `${p.x}%`, top: `${p.y}%` }}
-              >
-                <span className={"block rounded-full transition-all " + (active === i ? "w-6 h-6 bg-[color:var(--forest)]/30" : "w-4 h-4 bg-[color:var(--gold)]/40")} />
-                <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2.5 h-2.5 rounded-full bg-[color:var(--forest)] ring-2 ring-[color:var(--cream)]" />
-                <span className="absolute left-[calc(100%+8px)] top-1/2 -translate-y-1/2 whitespace-nowrap text-[10px] tracking-[0.22em] uppercase text-[color:var(--cream)] bg-[color:var(--ink)]/70 backdrop-blur px-2 py-1 rounded-full">{p.label}</span>
-              </button>
-            ))}
-            <div className="absolute bottom-4 left-4 glass-card rounded-full px-4 py-2 text-xs tracking-[0.22em] uppercase text-[color:var(--ink)]">Resort Map · Click a pin</div>
-          </div>
-          <div className="md:col-span-4 flex flex-col gap-4">
-            <div className="rounded-[6px] overflow-hidden aspect-square md:aspect-auto md:flex-1 border border-black/8">
-              <iframe title="Google Map" className="w-full h-full min-h-[280px]" src="https://www.google.com/maps?q=Coorg+Karnataka&output=embed" loading="lazy" />
+        <div className="grid md:grid-cols-2 gap-6">
+          <Reveal className="relative rounded-[6px] overflow-hidden aspect-[4/3] group" >
+            <div className="w-full h-full overflow-hidden" style={{ boxShadow: "0 40px 100px -50px rgba(43,43,43,0.4)" }}>
+              <img src={IMG.resortMain} alt="Amita Rasa resort" className="w-full h-full object-cover transition-transform duration-[1600ms] group-hover:scale-105" loading="lazy" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+              <div className="absolute bottom-5 left-5 right-5 text-[color:var(--cream)]">
+                <div className="text-[10px] tracking-[0.32em] uppercase text-[color:var(--gold)]/95">The Estate</div>
+                <div className="mt-1 text-2xl h-display">Amita Rasa · 20 acres</div>
+              </div>
             </div>
-            <div className="p-5 rounded-[6px] bg-[color:var(--cream)] border border-black/8">
-              <div className="text-[11px] tracking-[0.28em] uppercase text-[color:var(--gold)]">Location Selected</div>
-              <div className="mt-2 text-xl h-display">{pins[active].label}</div>
-              <p className="mt-2 text-sm text-[color:var(--body)]">Handcrafted spaces set inside 20 acres of quiet forest.</p>
-            </div>
-          </div>
+          </Reveal>
+          <Reveal delay={0.1} className="rounded-[6px] overflow-hidden aspect-[4/3] border border-black/8">
+            <iframe title="Google Map" className="w-full h-full" src="https://www.google.com/maps?q=Coorg+Karnataka&output=embed" loading="lazy" />
+          </Reveal>
         </div>
       </div>
     </section>
