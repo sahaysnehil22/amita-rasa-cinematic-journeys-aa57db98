@@ -144,13 +144,11 @@ export const ROOMS = [
 ];
 
 export const GALLERY: Array<{ img: string; span: string; title: string; desc: string; capacity?: string }> = [
-  { img: IMG.pool, span: "md:col-span-2 md:row-span-2", title: "Infinity Pool", desc: "An unbroken horizon of water and hills at dusk." },
+  { img: IMG.stoneArches, span: "md:col-span-2 md:row-span-2", title: "Stone Terraces", desc: "Handcrafted arches, quiet corners of the property." },
   { img: IMG.pavilionFloral, span: "md:col-span-2", title: "Wedding Pavilion", desc: "Draped in seasonal blooms.", capacity: "300 guests" },
-  { img: IMG.roomSuite, span: "", title: "Luxury Suite", desc: "Warm woods, linen, quiet light." },
   { img: IMG.amphiCushions, span: "", title: "Amphitheatre", desc: "Terraced seating under open sky.", capacity: "600 guests" },
-  { img: IMG.dining, span: "md:col-span-2", title: "Restaurant", desc: "Candlelit, open kitchen, seasonal menus." },
-  { img: IMG.mandapHills, span: "", title: "Sacred Mandap", desc: "Ceremony in the shadow of the hills." },
-  { img: IMG.gardens, span: "", title: "Lush Gardens", desc: "Walking paths between palms and blooms." },
-  { img: IMG.stoneArches, span: "md:col-span-2", title: "Stone Terraces", desc: "Handcrafted arches, quiet corners." },
-  { img: IMG.concert, span: "", title: "Concert Nights", desc: "Live performance at the water stage." },
+  { img: IMG.mandapRed, span: "", title: "Sacred Mandap", desc: "Ceremony under crimson canopy." },
+  { img: IMG.concert, span: "md:col-span-2", title: "Concert Nights", desc: "Live performance at the water stage." },
+  { img: IMG.mandapHills, span: "", title: "Mandap by the Hills", desc: "Ceremony in the shadow of the valley." },
+  { img: IMG.amphitheatre, span: "md:col-span-2", title: "Open-Air Theatre", desc: "Layered stone seating built into the hillside." },
 ];
