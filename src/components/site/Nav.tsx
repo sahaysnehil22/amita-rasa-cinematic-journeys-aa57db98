@@ -9,9 +9,8 @@ export function Nav() {
   const [open, setOpen] = useState(false);
   useEffect(() => {
     const on = () => {
-      const y = window.scrollY;
       setScrolled(y > 40);
-      const hero = document.getElementById("hero");
+      const hero = document.getElementById("home");
       if (hero) {
         const bottom = hero.getBoundingClientRect().bottom;
         setInHero(bottom > 60);
