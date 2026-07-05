@@ -9,6 +9,7 @@ export function Nav() {
   const [open, setOpen] = useState(false);
   useEffect(() => {
     const on = () => {
+      const y = window.scrollY;
       setScrolled(y > 40);
       const hero = document.getElementById("home");
       if (hero) {
