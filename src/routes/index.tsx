@@ -581,26 +581,24 @@ function ResortMap() {
           <Reveal delay={0.1}><h2 className="mt-6 text-5xl md:text-6xl h-display">Set within <span className="italic text-[color:var(--forest)]">quiet forest.</span></h2></Reveal>
         </div>
         <div className="grid md:grid-cols-2 gap-6">
-          <Reveal className="relative rounded-[6px] overflow-hidden aspect-[4/3] group" >
-            <div className="w-full h-full overflow-hidden relative" style={{ boxShadow: "0 40px 100px -50px rgba(43,43,43,0.4)" }}>
-              <img src={IMG.amphitheatre} alt="Amita Rasa amphitheatre" className="w-full h-full object-cover transition-transform duration-[1600ms] group-hover:scale-105" loading="lazy" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-              <div className="absolute bottom-5 left-5 right-5 text-[color:var(--cream)]">
-                <div className="text-[10px] tracking-[0.32em] uppercase text-[color:var(--gold)]/95">The Estate</div>
-                <div className="mt-1 text-2xl h-display">Amita Rasa · 20 acres</div>
-              </div>
+          <div className="relative rounded-[6px] overflow-hidden aspect-[4/3] group" style={{ boxShadow: "0 40px 100px -50px rgba(43,43,43,0.4)" }}>
+            <img src={IMG.amphitheatre} alt="Amita Rasa amphitheatre" className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1600ms] group-hover:scale-105" loading="lazy" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+            <div className="absolute bottom-5 left-5 right-5 text-[color:var(--cream)]">
+              <div className="text-[10px] tracking-[0.32em] uppercase text-[color:var(--gold)]/95">The Estate</div>
+              <div className="mt-1 text-2xl h-display">Amita Rasa · 20 acres</div>
             </div>
-          </Reveal>
-          <Reveal delay={0.1} className="rounded-[6px] overflow-hidden aspect-[4/3] border border-black/8">
+          </div>
+          <div className="relative rounded-[6px] overflow-hidden aspect-[4/3] border border-black/8 bg-[color:var(--cream)]">
             <iframe
               title="Google Map"
-              className="w-full h-full block"
-              src="https://maps.google.com/maps?q=Coorg%2C+Karnataka%2C+India&t=&z=10&ie=UTF8&iwloc=&output=embed"
+              className="absolute inset-0 w-full h-full block"
+              src="https://www.google.com/maps?q=Coorg,%20Karnataka,%20India&z=10&output=embed"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               allowFullScreen
             />
-          </Reveal>
+          </div>
         </div>
       </div>
     </section>
