@@ -80,7 +80,15 @@ function Hero() {
   return (
     <section ref={ref} className="relative h-[100svh] w-full overflow-hidden grain" id="home">
       <motion.div style={{ y }} className="absolute inset-0">
-        <img src={IMG.hero} alt="Amita Rasa resort at dawn" className="w-full h-full object-cover animate-kenburns" fetchPriority="high" />
+        <video
+          src={IMG.film}
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster={IMG.hero}
+          className="w-full h-full object-cover"
+        />
       </motion.div>
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/70" />
       <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-black/20" />
