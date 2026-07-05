@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion, useInView, useScroll, useTransform, animate, AnimatePresence } from "motion/react";
 import { useEffect, useRef, useState } from "react";
-import { Play, ArrowRight, ArrowUpRight, Sun, MapPin, Star, X, Sparkles, Trees, Wine, Users, Flower2, Wifi, Car, Gamepad2, Flame, Utensils, Clock, Waves, Baby, ChevronLeft, ChevronRight } from "lucide-react";
+import { Play, ArrowRight, ArrowUpRight, MapPin, Star, X, Sparkles, Trees, Wine, Users, Flower2, Wifi, Car, Gamepad2, Flame, Utensils, Clock, Waves, Baby, ChevronLeft, ChevronRight } from "lucide-react";
 import { IMG, STORY, WHY, EXPERIENCES, STATS, JOURNEY, AMENITIES, NEARBY, TESTIMONIALS, EVENTS, GALLERY } from "@/lib/site-data";
 
 export const Route = createFileRoute("/")({
@@ -76,7 +76,6 @@ function Hero() {
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "22%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.9], [1, 0]);
-  const [temp] = useState(28);
   return (
     <section ref={ref} className="relative h-[100svh] w-full overflow-hidden grain" id="home">
       <motion.div style={{ y }} className="absolute inset-0">
@@ -92,18 +91,6 @@ function Hero() {
       </motion.div>
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/70" />
       <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-black/20" />
-
-      {/* Weather widget */}
-      <div className="absolute top-24 right-6 md:right-10 z-10">
-        <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 2.6, duration: 0.8 }}
-          className="glass-card rounded-2xl px-4 py-3 text-[color:var(--cream)] flex items-center gap-3 min-w-[180px]">
-          <Sun size={18} className="text-[color:var(--gold)]" />
-          <div>
-            <div className="text-xl leading-none" style={{fontFamily:"var(--font-display)"}}>{temp}°C</div>
-            <div className="text-[10px] tracking-[0.22em] uppercase text-[color:var(--cream)]/80 mt-1">Perfect Weather</div>
-          </div>
-        </motion.div>
-      </div>
 
       <div className="relative z-10 h-full container-luxe flex flex-col items-center justify-center text-center text-[color:var(--cream)]">
         <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 2.5, duration: 0.9 }}>
@@ -131,9 +118,9 @@ function Hero() {
         </motion.div>
       </div>
 
-      <motion.div style={{ opacity }} className="absolute bottom-10 left-8 z-10 flex items-center gap-3 text-[color:var(--cream)]/85">
-        <span className="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center"><Play size={12} fill="currentColor" /></span>
-        <span className="text-[11px] tracking-[0.28em] uppercase">Experience Amita Rasa</span>
+      <motion.div style={{ opacity }} aria-hidden className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-[color:var(--cream)]/70">
+        <span className="text-[10px] tracking-[0.4em] uppercase">Scroll</span>
+        <span className="w-px h-10 bg-[color:var(--cream)]/40" />
       </motion.div>
     </section>
   );
