@@ -11,6 +11,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { SiteChrome } from "@/components/site/SiteChrome";
 
 function NotFoundComponent() {
   return (
@@ -77,14 +78,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Amita Rasa Resort — Where Nature Meets Celebration" },
+      { name: "description", content: "A luxury forest resort for weddings, celebrations and quiet escapes. Timeless moments, beautifully yours." },
+      { name: "author", content: "Amita Rasa Resort" },
+      { property: "og:title", content: "Amita Rasa Resort — Where Nature Meets Celebration" },
+      { property: "og:description", content: "A luxury forest resort for weddings, celebrations and quiet escapes." },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "Amita Rasa Resort" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
       {
@@ -92,6 +93,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: appCss,
       },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Manrope:wght@300;400;500;600;700&display=swap" },
     ],
   }),
   shellComponent: RootShell,
@@ -119,8 +123,9 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <SiteChrome>
+        <Outlet />
+      </SiteChrome>
     </QueryClientProvider>
   );
 }
