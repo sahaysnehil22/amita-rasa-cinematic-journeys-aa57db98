@@ -429,45 +429,63 @@ function Amenities() {
 
 /* --------------------- Gallery Bento --------------------- */
 function Gallery() {
-  const [flipped, setFlipped] = useState<number | null>(null);
   return (
     <section id="gallery" className="py-24 md:py-32 bg-[color:var(--sand)]">
       <div className="container-luxe">
         <div className="max-w-3xl mb-14">
           <Reveal><Eyebrow>Glimpses of Amita Rasa</Eyebrow></Reveal>
           <Reveal delay={0.1}><h2 className="mt-6 text-5xl md:text-6xl h-display">Beautiful spaces,<br/><span className="italic text-[color:var(--forest)]">beautiful stories.</span></h2></Reveal>
-          <Reveal delay={0.2}><p className="mt-6 text-[color:var(--body)] max-w-lg">Tap any card to reveal the story behind the frame.</p></Reveal>
+          <Reveal delay={0.2}><p className="mt-6 text-[color:var(--body)] max-w-lg">A curated frame of the estate — where every corner tells its own quiet story.</p></Reveal>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 md:auto-rows-[220px] gap-4">
-          {GALLERY.map((g, i) => (
-            <Reveal key={i} delay={i*0.04} className={g.span || ""}>
-              <div
-                data-interactive
-                onClick={() => setFlipped(flipped === i ? null : i)}
-                className={"flip-card w-full h-full min-h-[220px] cursor-pointer rounded-[4px] " + (flipped === i ? "is-flipped" : "")}
-                style={{ boxShadow: "0 25px 60px -35px rgba(43,43,43,0.4)" }}
-              >
-                <div className="flip-card-inner w-full h-full">
-                  <div className="flip-card-face group">
-                    <img src={g.img} alt={g.title} loading="lazy" className="w-full h-full object-cover transition-transform duration-[1400ms] group-hover:scale-110" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-                    <div className="absolute bottom-4 left-4 right-4 text-[color:var(--cream)]">
-                      <div className="text-lg" style={{fontFamily:"var(--font-display)"}}>{g.title}</div>
-                      <div className="text-[10px] tracking-[0.28em] uppercase text-[color:var(--cream)]/70 mt-1">Tap to explore</div>
-                    </div>
+        <div className="grid grid-cols-2 md:grid-cols-4 md:grid-rows-3 md:auto-rows-[220px] gap-3 md:gap-4">
+          {GALLERY.map((g, i) => {
+            const spans = [
+              "md:col-span-2 md:row-span-2",
+              "md:col-span-1 md:row-span-1",
+              "md:col-span-1 md:row-span-2",
+              "md:col-span-1 md:row-span-1",
+              "md:col-span-2 md:row-span-1",
+              "md:col-span-1 md:row-span-1",
+              "md:col-span-2 md:row-span-1",
+            ];
+            const span = spans[i] || "";
+            return (
+              <Reveal key={i} delay={i * 0.05} className={span}>
+                <a
+                  href="#stay"
+                  data-interactive
+                  className="relative group block w-full h-full min-h-[220px] rounded-[6px] overflow-hidden"
+                  style={{ boxShadow: "0 30px 70px -40px rgba(43,43,43,0.45)" }}
+                >
+                  <img
+                    src={g.img}
+                    alt={g.title}
+                    loading="lazy"
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1800ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.08]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent opacity-90 transition-opacity duration-700 group-hover:opacity-100" />
+                  <div className="absolute inset-0 ring-1 ring-inset ring-white/10" />
+
+                  <div className="absolute top-4 left-4 text-[10px] tracking-[0.32em] uppercase text-[color:var(--cream)]/70">
+                    {String(i + 1).padStart(2, "0")}
                   </div>
-                  <div className="flip-card-face flip-card-back p-6 flex flex-col justify-between text-[color:var(--cream)]" style={{ background: "linear-gradient(150deg, #2E5E4E, #1B3A30)" }}>
-                    <div>
-                      <div className="text-[10px] tracking-[0.3em] uppercase text-[color:var(--gold)]">{g.capacity ?? "The Space"}</div>
-                      <div className="mt-2 text-2xl" style={{fontFamily:"var(--font-display)"}}>{g.title}</div>
-                      <p className="mt-3 text-sm text-[color:var(--cream)]/80 leading-relaxed">{g.desc}</p>
-                    </div>
-                    <div className="mt-6 flex items-center gap-2 text-xs tracking-[0.22em] uppercase text-[color:var(--gold)]">Enquire <ArrowUpRight size={14} /></div>
+                  <div className="absolute top-4 right-4 w-9 h-9 rounded-full bg-[color:var(--cream)]/90 flex items-center justify-center opacity-0 -translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
+                    <ArrowUpRight size={16} className="text-[color:var(--forest)]" />
                   </div>
-                </div>
-              </div>
-            </Reveal>
-          ))}
+
+                  <div className="absolute bottom-0 left-0 right-0 p-5 md:p-6 text-[color:var(--cream)]">
+                    {g.capacity && (
+                      <div className="text-[10px] tracking-[0.28em] uppercase text-[color:var(--gold)]/95">{g.capacity}</div>
+                    )}
+                    <div className="mt-1 text-xl md:text-2xl" style={{ fontFamily: "var(--font-display)" }}>{g.title}</div>
+                    <p className="mt-1.5 text-xs md:text-sm text-[color:var(--cream)]/75 leading-relaxed max-w-[36ch] opacity-0 max-h-0 group-hover:opacity-100 group-hover:max-h-24 transition-all duration-700">
+                      {g.desc}
+                    </p>
+                  </div>
+                </a>
+              </Reveal>
+            );
+          })}
         </div>
       </div>
     </section>
