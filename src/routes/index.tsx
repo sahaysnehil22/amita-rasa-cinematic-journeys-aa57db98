@@ -368,8 +368,8 @@ function FeaturedCelebration() {
       <div className="container-luxe grid md:grid-cols-12 gap-10 items-center">
         <Reveal className="md:col-span-7">
           <div className="relative overflow-hidden rounded-[4px] aspect-[16/10] group cursor-pointer" onClick={() => setOpen(true)} data-interactive>
-            <img src={IMG.concert} alt="Featured celebration" className="w-full h-full object-cover transition-transform duration-[1600ms] group-hover:scale-105" loading="lazy" />
-            <div className="absolute inset-0 bg-black/40 group-hover:bg-black/25 transition-colors" />
+            <video src={IMG.film} autoPlay muted loop playsInline poster={IMG.concert} className="w-full h-full object-cover" />
+            <div className="absolute inset-0 bg-black/35 group-hover:bg-black/20 transition-colors" />
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="relative">
                 <span className="absolute inset-0 rounded-full bg-[color:var(--cream)]/30 animate-leaf-glow" />
@@ -394,7 +394,7 @@ function FeaturedCelebration() {
         {open && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[80] bg-black/85 backdrop-blur-sm flex items-center justify-center p-4" onClick={() => setOpen(false)}>
             <motion.div initial={{ scale: 0.94, y: 20 }} animate={{ scale: 1, y: 0 }} exit={{ scale: 0.94 }} transition={{ duration: 0.4 }} className="relative w-full max-w-5xl aspect-video rounded-lg overflow-hidden" onClick={(e) => e.stopPropagation()}>
-              <iframe src="https://player.vimeo.com/video/76979871?autoplay=1&title=0&byline=0&portrait=0" className="w-full h-full" allow="autoplay; fullscreen" />
+              <video src={IMG.film} autoPlay loop controls playsInline className="w-full h-full object-cover bg-black" />
               <button aria-label="Close" onClick={() => setOpen(false)} className="absolute top-3 right-3 w-10 h-10 rounded-full bg-[color:var(--cream)]/90 flex items-center justify-center text-[color:var(--ink)]"><X size={16} /></button>
             </motion.div>
           </motion.div>
