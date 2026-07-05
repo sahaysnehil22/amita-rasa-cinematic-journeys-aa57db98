@@ -450,13 +450,17 @@ function Gallery() {
             ];
             const span = spans[i] || "md:col-span-1 md:row-span-1";
             return (
-              <Reveal key={i} delay={i * 0.05} className={span + " h-full"}>
-                <a
-                  href="#stay"
-                  data-interactive
-                  className="relative group block w-full h-full rounded-[6px] overflow-hidden"
-                  style={{ boxShadow: "0 30px 70px -40px rgba(43,43,43,0.45)" }}
-                >
+              <motion.a
+                key={i}
+                href="#stay"
+                data-interactive
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-10% 0px" }}
+                transition={{ duration: 0.9, delay: i * 0.05, ease: [0.22, 1, 0.36, 1] }}
+                className={"relative group block rounded-[6px] overflow-hidden " + span}
+                style={{ boxShadow: "0 30px 70px -40px rgba(43,43,43,0.45)" }}
+              >
                   <img
                     src={g.img}
                     alt={g.title}
@@ -482,8 +486,7 @@ function Gallery() {
                       {g.desc}
                     </p>
                   </div>
-                </a>
-              </Reveal>
+              </motion.a>
             );
           })}
         </div>
